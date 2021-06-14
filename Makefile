@@ -1,15 +1,22 @@
+SHELL:=/bin/bash
+REGISTRY_HOST=localhost:5000
+
 create-kind: create-registry
-	ctlptl apply -f ctlptl/registry.yaml
+	kind create cluster --config kind/kind.yaml
+	kubectl create -f kind/configmap.yaml
 
 create-registry:
-	ctlptl apply -f ctlptl/cluster.yaml
+	kind/setup-local-registry.sh
 
-delete-kind:
-	ctlptl delete -f ctlptl/cluster.yaml
+delete-kind: delete-registry
+	kind delete cluster
 
 delete-registry:
-	ctlptl delete -f ctlptl/registry.yaml
+	kind/stop-local-registry.sh
 
 docker-push:
-	docker build -t localhost:5005/api . 
-	docker push localhost:5005/api
+	docker build -t $(REGISTRY_HOST)/api . 
+	docker push $(REGISTRY_HOST)/api
+
+create-deployment:
+	kubectl create -f yaml/deployment.yaml

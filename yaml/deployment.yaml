@@ -15,10 +15,6 @@ spec:
     spec:
       containers:
       - name: simple-server
-        image: localhost:40043/api:latest
+        image: localhost:5000/api:latest
         ports:
-        - containerPort: 80
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
+        - containerPort: 8080

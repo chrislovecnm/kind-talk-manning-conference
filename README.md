@@ -1,29 +1,29 @@
-# Kubernetes Template Project
+# Kind Talk
 
-The Kubernetes Template Project is a template for starting new projects in the GitHub organizations owned by Kubernetes. All Kubernetes projects, at minimum, must have the following files:
+## Required Tools
 
-- a `README.md` outlining the project goals, sponsoring sig, and community contact information
-- an `OWNERS` with the project leads listed as approvers ([docs on `OWNERS` files][owners])
-- a `CONTRIBUTING.md` outlining how to contribute to the project
-- an unmodified copy of `code-of-conduct.md` from this repo, which outlines community behavior and the consequences of breaking the code
-- a `LICENSE` which must be Apache 2.0 for code projects, or [Creative Commons 4.0] for documentation repositories, without any custom content
-- a `SECURITY_CONTACTS` with the contact points for the Product Security Team 
-  to reach out to for triaging and handling of incoming issues. They must agree to abide by the
-  [Embargo Policy](https://git.k8s.io/security/private-distributors-list.md#embargo-policy)
-  and will be removed and replaced if they violate that agreement.
+1. kubectl and kind: https://kubernetes.io/docs/tasks/tools/
+2. ctlptl: https://github.com/tilt-dev/ctlptl
+3. container runtime such as docker: https://docs.docker.com/get-docker/
 
-## Community, discussion, contribution, and support
+## kind
 
-Learn how to engage with the Kubernetes community on the [community page](http://kubernetes.io/community/).
+kind is a tool that runs a local Kubernetes cluster using an image that
+contains a full Kubernetes cluster. The tool kind is maintained by the K8s
+test team and is used for Kubernetes testing.
 
-You can reach the maintainers of this project at:
+## ctlptl
 
-- [Slack](http://slack.k8s.io/)
-- [Mailing List](https://groups.google.com/forum/#!forum/kubernetes-dev)
+ctlptl "coddle poodle" is a CLI that allows you to run kind and easily start
+a docker registry that kind can connect to.
 
-### Code of conduct
+## Tested Environments
 
-Participation in the Kubernetes community is governed by the [Kubernetes Code of Conduct](code-of-conduct.md).
+This demo was built on WSL2, so should run under most Linux environments.
 
-[owners]: https://git.k8s.io/community/contributors/guide/owners.md
-[Creative Commons 4.0]: https://git.k8s.io/website/LICENSE
+## Demo
+
+The Makefile in this project contains all of these commands. After installing
+all of the above tools you can run the make targets.
+
+
